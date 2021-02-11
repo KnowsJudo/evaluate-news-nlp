@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="">
+            Lachie's NLP tool
+        </div>
+        <div class="">
+            navigation
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <form class="" onsubmit="return Client.handleSubmit(event)">
+                <input id="name" type="text" name="input" value="" placeholder="Enter a URL for a news article">
+                <input type="submit" name="" onclick="return Client.handleSubmit(event)"
+                    onsubmit="return Client.handleSubmit(event)">
+            </form>
+        </section>
+
+        <section>
+            <strong>Form Results:</strong>
+            <pre id="results"></pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Lachlan Bardwell 2021</p>
+    </footer>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                console.log('Registered Service Worker')
+                navigator.serviceWorker.register('/service-worker.js')
+            });
+        }
+    </script>
+</body>
+
+</html>
