@@ -16,6 +16,12 @@ Run the following command to start the webserver(port 3000):
 npm run start
 ```
 
+To run functionality tests with Jest use command:
+
+```
+npm run test
+```
+
 Dist folder will be compiled when following command is run:
 
 ```
