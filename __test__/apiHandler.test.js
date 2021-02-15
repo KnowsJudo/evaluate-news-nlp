@@ -5,15 +5,7 @@ import {
 const url1 = global.testUrl
 const url2 = "Definitely not a URL"
 
-const res1 = {
-    agreement: "DISAGREEMENT",
-    confidence: "86",
-    irony: "NONIRONIC",
-    scoreTag: "P",
-    subjectivity: "SUBJECTIVE"
-}
-
-const res2 = {
+const errorResult = {
     error: 'error fetching sentiment'
 }
 
@@ -29,7 +21,13 @@ describe("Testing the Fetch Sentiment functionality", () => {
     test("Testing the handleSentiment function handles valid URLs correctly", (done) => {
         function callback1(data) {
             try {
-                expect(data).toEqual(res1)
+                // We don't care if the API results vary across articles, we
+                // only want to ensure they resolved with the correct properties
+                expect(data).toHaveProperty('agreement')
+                expect(data).toHaveProperty('confidence')
+                expect(data).toHaveProperty('irony')
+                expect(data).toHaveProperty('scoreTag')
+                expect(data).toHaveProperty('subjectivity')
                 done()
             } catch (error) {
                 done(error)
@@ -42,7 +40,7 @@ describe("Testing the Fetch Sentiment functionality", () => {
     test("Testing the handleSentiment function handles invalid URLs correctly", (done) => {
         function callback2(data) {
             try {
-                expect(data).toEqual(res2)
+                expect(data).toEqual(errorResult)
                 done()
             } catch (error) {
                 done(error)
